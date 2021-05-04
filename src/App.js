@@ -2,10 +2,17 @@
 import Header from "./MyComponents/Header";
 import {Footer} from "./MyComponents/Footer";
 import {Todos} from "./MyComponents/Todos";
-
+import {AddTodo} from "./MyComponents/AddTodo";
+import React, { useState } from 'react';
 
 function App() {
-  let todos = [
+  const onDelete = (todo)=>{
+    console.log("i am on delete",todo);
+    settodos(todos.filter((e)=>{
+      return e!==todo;
+    })) 
+  }
+  const [todos, settodos] = useState([
     {
       sno:1,
       title:"Go to the market",
@@ -21,11 +28,12 @@ function App() {
       title:"Go to the market",
       desc: "hi let go to the college"
     }
-  ]
+  ]);
   return (
   <>
   <Header title = "My Todos List" searchBar={false} />
-  <Todos todos={todos}/>
+  <AddTodo/>
+  <Todos todos={todos} onDelete={onDelete}/>
   <Footer/>
   </>
   );
