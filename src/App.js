@@ -4,12 +4,11 @@ import { Footer } from "./MyComponents/Footer";
 import { Todos } from "./MyComponents/Todos";
 import { AddTodo } from "./MyComponents/AddTodo";
 import React, { useState, useEffect } from 'react';
-import React from "react";
+import {About} from "./MyComponents/About";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom"; 
 
 function App() {
@@ -31,7 +30,7 @@ function App() {
   const addTodo = (title, desc) => {
     console.log("I am adding todo", title, desc)
     let sno;
-    if (todos.length == 0) {
+    if (todos.length === 0) {
       sno = 0;
     } else {
       sno = todos[todos.length - 1].sno + 1
@@ -44,21 +43,19 @@ function App() {
     }
     settodos([...todos, myTodo]);
     console.log(myTodo)
-
-    useEffect(() => {
-      localStorage.setItem("todos", JSON.stringify(todos));
-
-
-    }, [todos])
-
-
   }
   const [todos, settodos] = useState([initTodo]);
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+
+
+  }, [todos])
   return (
     <>
+    <Router>
       <Header title="My Todos List" searchBar={false} />
       <Switch>
-      <Route path="/" render = {()=>{
+      <Route exact path="/" render = {()=>{
         return(
         <>
          <AddTodo addTodo={addTodo} />
@@ -66,13 +63,12 @@ function App() {
         </>)
       }}>
           </Route>
-          <Route path="/about">
+          <Route exact path="/about">
             <About />
           </Route>
         </Switch>
-     
-        
       <Footer />
+      </Router>
     </>
   );
 

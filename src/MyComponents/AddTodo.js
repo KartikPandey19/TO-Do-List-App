@@ -10,8 +10,8 @@ export const AddTodo = ({addTodo}) => {
         }
         else{
         addTodo(title, desc)
-        setTitle =("");
-        SetDesc = ("");
+        setTitle("");
+        setDesc("");
     }
 }
     return (
