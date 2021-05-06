@@ -1,5 +1,7 @@
 body {
   margin: 0;
+  background-image:url("https://cdn.pixabay.com/photo/2016/03/10/18/11/office-1248872_1280.jpg");
+  background-size:cover;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
